@@ -1,0 +1,106 @@
+button {
+    display: inline-block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    cursor: pointer;
+    margin: 20px;
+    padding: 5px 25px;
+    border: 1px solid #018dc4;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    font: normal 12px/normal "Lucida Console", Monaco, monospace;
+    color: rgba(255, 255, 255, 0.9);
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    background: #0199d9;
+    -webkit-box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+    text-shadow: -1px -1px 0 rgba(15, 73, 168, 0.66);
+    -webkit-transition: background-color 300ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: background-color 300ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: background-color 300ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: background-color 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.parent {
+    margin-bottom: 15px;
+    margin-left: 10%;
+    color: #102030;
+    clear: both;
+    width: 100%;
+}
+
+.left {
+    float: left;
+    width: 525px;
+    height: 525px;
+    border: 1px solid #CEDCEA;
+    padding: 5px;
+    display: table;
+    margin: 0 auto;
+}
+
+.center {
+    float: left;
+    width: 40%;
+    height: 525px;
+    border: 1px solid #CEDCEA;
+    padding: 5px;
+    display: table;
+    margin: 0 auto;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.right {
+    float: left;
+    margin-top: 5%;
+    min-height: 0px;
+    width: 77%;
+    border: 1px solid #CEDCEA;
+    padding: 5px;
+}
+
+.section {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+    text-align: center;
+}
+
+#outerdiv {
+    width: 700px;
+    height: 320px;
+    overflow: hidden;
+    position: relative;
+}
+
+#ddsConverter {
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: 1280px;
+    height: 1200px;
+}
+
+#formBack {
+    background-color: #000000;
+}
+
+body {
+    background-image: url("../resources/csgo01.jpg");
+    background-color: black;
+    width: 100%;
+    height: 1000px;
+    color: white;
+    text-shadow: 1px 1px black;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 8px;
+}

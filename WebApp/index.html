@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="./javascript/notify.min.js"></script>
+
+    <script language="javascript" type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script language="javascript" type="text/javascript" src="javascript/p5/p5.min.js"></script>
+    <script language="javascript" type="text/javascript" src="javascript/p5/p5.dom.min.js"></script>
+    <script language="javascript" type="text/javascript" src="javascript/Tools.js"></script>
+    <script language="javascript" type="text/javascript" src="javascript/normalWspc.js"></script>
+
+
+    <script language="javascript" type="text/javascript" src="javascript/contextMenu/jquery.contextMenu.min.js"></script>
+    <script language="javascript" type="text/javascript" src="javascript/contextMenu/jquery.ui.position.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.min.css">
+    <link rel="stylesheet" type="text/css" href="javascript/contextMenu/jquery.contextMenu.min.css">
+    <link rel="stylesheet" type="text/css" href="css/template.css">
+
+    <title>CS:GO - Minimap Icon Placer</title>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <meta name="description" content="This Counter-Strike Global Offensive tool lets mappers to place their minimap loading icons easily without doing it manually, create working minimap for csgo">
+</head>
+
+<body>
+
+    <div style="padding:20px;margin-top:230px;">
+        <center>
+            <!-- <h1>Counter-Strike Global Offensive</h1> -->
+            <h2>Minimap Icon Placer</h2>
+            <h6>beta 2.1</h6>
+        </center>
+    </div>
+
+
+
+    <div class="parent" style="">
+
+        <div class="left">
+            <div id="software" class="context-menu-one" style="width:512px;height:512px;"></div>
+        </div>
+        <div class="center formBack">
+            <div id="exportP">
+                <form class="form-horizontal" id="exForm">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend style="color:white;">Export Properties</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="mapName">Map Name</label>
+                            <div class="col-md-5">
+                                <input id="mapName" name="mapName" type="text" placeholder="i.e de_inferno" class="form-control input-md" required="">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="tfPosx">Position X</label>
+                            <div class="col-md-3">
+                                <input id="tfPosx" name="tfPosx" type="number" step="0.001" value="0" placeholder="" class="form-control input-md" required="">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="tfPosy">Position Y</label>
+                            <div class="col-md-3">
+                                <input id="tfPosy" name="tfPosy" type="number" step="0.001" placeholder="" value="0" class="form-control input-md" required="">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="tfRotation">Rotation</label>
+                            <div class="col-md-3">
+                                <input id="tfRotation" name="tfRotation" type="number" step="0.001" placeholder="" value="0" class="form-control input-md" required="">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="tfZoom">Zoom</label>
+                            <div class="col-md-3">
+                                <input id="tfZoom" name="tfZoom" type="number" step="0.001" placeholder="" value="0" class="form-control input-md" required="">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="tfScale">Scale</label>
+                            <div class="col-md-3">
+                                <input id="tfScale" name="tfScale" type="number" step="0.001" placeholder="" value="0" class="form-control input-md" required="">
+
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group" style="float:right; padding-right:50px;">
+                            <label class="col-md-4 control-label" for="btExport"></label>
+                            <div class="col-md-3">
+                                <button id="btExport" name="btExport" class="btn btn-primary">Export..</button>
+
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                </form>
+
+            </div>
+        </div>
+
+
+
+        <div class="right container panel-group" style="text-shadow:none;">
+            <div class="panel-group" id="accordion">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Convert to DDS</a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <p>&nbsp;Online DDS Converter:<br />&nbsp; &nbsp; &nbsp; &nbsp;Online website which eliminates the need of nvidia plugin or photoshop;<br />&nbsp; &nbsp; &nbsp; &nbsp;Configuration:<br> &nbsp; &nbsp; &nbsp; &nbsp;Surface format
+                                -> DXT1 (Compressed , 1-bit alpha)<br> &nbsp; &nbsp; &nbsp; &nbsp;Generate mipmaps -> YES<br>
+                            </p>
+                            <a href="https://online-converting.com/image/convert2dds/" style="float:right;" target="_blank">Start Here</a>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Text Tutorial</a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse25">Video Tutorial</a>
+                        </h4>
+                    </div>
+                    <div id="collapse25" class="panel-collapse collapse">
+                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                    </div>
+                </div>
+
+                -->
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Tools</a>
+                        </h4>
+                    </div>
+                    <div id="collapse3" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <p>&nbsp;Overview.cfg:<br />&nbsp; &nbsp; &nbsp; &nbsp;This file is used to facilitate the creation of raw overview image;<br />&nbsp; &nbsp; &nbsp; &nbsp;Place under: "csgo\cfg";<br />&nbsp; &nbsp; &nbsp; &nbsp;In-map: Open console
+                                and type "exec CREATE_OVERVIEW";<br />&nbsp; &nbsp; &nbsp; &nbsp;Commands: o Start the script | Keypad + Increate cl_leveloverview | Keypad - Decrease cl_leveloverview | p take screenshot | i Exit Game</p>
+                            <a href="/downloadable/CREATE_OVERVIEW.zip" style="float:right;">Download Here</a>
+                            <br><br>
+                            <p>&nbsp;Online Photoshop:<br />&nbsp; &nbsp; &nbsp; &nbsp;Quickly edit your overview image;<br></p>
+                            <a href="https://pixlr.com/editor/" style="float:right;" target="_blank">Open It Here</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+
+
+        <!-- NEW CONTENT HERE -->
+
+        <section class="right section">
+            <h1>MIP - Updates</h1>
+
+            <h4>Beta 2.1 - Operation Hydra</h4>
+            <ul>
+                <li>Placed "value: 0" on posX,posY,rotation,zoom,scale fields (due to export problems)</li>
+                <li>Removed some unused content</li>
+                <li>Corrected some CSS bugs</li>
+                <li>Added Updates section</li>
+                <li>The Minimap Icon Placer now its open-source: <a href="https://github.com/alexbosquin/csgo-minimap-icon-placer">CHECK SOURCE HERE</a></li>
+            </ul>
+        </section>
+
+
+
+</body>
+
+</html>
